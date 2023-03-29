@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A 1-3</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Find Your Lvevel</h1>
+      <br />
+      <nav>
+        <ul>
+          <li><a href="../main page/index.html">Home</a></li>
+          <li>
+            <a href="#" class="switch" data-page="page1.html">About Us</a>
+          </li>
+          <li>
+            <a href="#" class="switch" data-page="page2.html">Services</a>
+          </li>
+          <li><a href="#" class="switch" data-page="page3.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h2>Welcome to our home page</h2>
+
+        <div class="start-div">
+          <div class="text-div">
+            <h3>Test your Swedish grammar knowledge now!</h3>
+          </div>
+          <div class="get-div">
+            <a href="a/a1-3/index.html" class="button">Get Started</a>
+          </div>
+        </div>
+
+        <!--
+          <a href="#" class="button" data-page="page2.html">Intermediate</a>
+        <a href="#" class="button" data-page="page3.html">Advanced</a>
+        -->
+
+        <div class="container">
+          <div id="content">
+            <!-- Content will be loaded dynamically here -->
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright © Language Testing Website</p>
+    </footer>
+
+    <script>
+      $(document).ready(function () {
+        // Load default content on page load
+        $("#content").load("page1.html");
+
+        // Handle link clicks
+        $(".switch").click(function (e) {
+          e.preventDefault();
+          var page = $(this).data("page");
+
+          // Load content dynamically into the #content section
+          $("#content").load(page);
+        });
+      });
+    </script>
+  </body>
+</html>

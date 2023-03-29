@@ -1,0 +1,208 @@
+<html>
+  <body>
+    <div class="draggable-answers-div">
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="längtar"
+      >
+        längtar
+      </div>
+      <div class="draggable" id="drag-area" draggable="true" data-value="bor">
+        bor
+      </div>
+      <div class="draggable" id="drag-area" draggable="true" data-value="trivs">
+        trivs
+      </div>
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="vaknar"
+      >
+        vaknar
+      </div>
+      <div class="draggable" id="drag-area" draggable="true" data-value="tar">
+        tar
+      </div>
+
+      <div class="draggable" id="drag-area" draggable="true" data-value="äter">
+        äter
+      </div>
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="pluggar"
+      >
+        pluggar
+      </div>
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="stiger"
+      >
+        stiger
+      </div>
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="surfar"
+      >
+        surfar
+      </div>
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="tränar"
+      >
+        tränar
+      </div>
+
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="lyssnar"
+      >
+        lyssnar
+      </div>
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="dricker"
+      >
+        dricker
+      </div>
+      <div class="draggable" id="drag-area" draggable="true" data-value="fikar">
+        fikar
+      </div>
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="träffar"
+      >
+        träffar
+      </div>
+      <div
+        class="draggable"
+        id="drag-area"
+        draggable="true"
+        data-value="kommer"
+      >
+        kommer
+      </div>
+    </div>
+
+    <div class="mydiv">
+      <h3>3 Verb</h3>
+
+      Milena <input name="answer1" type="text" class="drop" /> från Brasilien,
+      men nu <input name="answer2" type="text" class="drop" /> hon i Stockholm
+      och <input name="answer3" type="text" class="drop" /> filosofi på
+      universitetet. Varje morgon
+      <input name="answer4" type="text" class="drop" /> Milena klockan halv sju
+      och hon <input name="answer5" type="text" class="drop" /> upp direkt. Hon
+      <input name="answer6" type="text" class="drop" /> en kopp te och
+      <input name="answer7" type="text" class="drop" /> en banan och sedan går
+      hon till gymmet och <input name="answer8" type="text" class="drop" />.
+      Klockan tio
+      <input name="answer9" type="text" class="drop" />
+      hon bussen till universitetet. Efter universitetet
+      <input name="answer10" type="text" class="drop" /> hon en kompis och de
+      <input name="answer11" type="text" class="drop" /> på ett kafé i stan. På
+      kvällen <input name="answer12" type="text" class="drop" /> hon på internet
+      och <input name="answer13" type="text" class="drop" /> på musik. Milena
+      <input name="answer14" type="text" class="drop" /> bra i Sverige, men
+      ibland <input name="answer15" type="text" class="drop" />
+      hon efter solen i Brasilien.
+
+      <br />
+      <button onclick="checkAnswers()">Check Answers</button>
+      <br />
+    </div>
+
+    <script>
+      function checkAnswers() {
+        const answers = [
+          "kommer",
+          "bor",
+          "pluggar",
+          "vaknar",
+          "stiger",
+          "dricker",
+          "äter",
+          "tränar",
+          "tar",
+          "träffar",
+          "fikar",
+          "surfar",
+          "lyssnar",
+          "trivs",
+          "längtar",
+        ];
+        let numCorrect = 0;
+        for (let i = 0; i < answers.length; i++) {
+          const answerInput = document.getElementsByName("answer" + (i + 1))[0];
+          const userAnswer = answerInput.value.trim();
+          const correctAnswer = answers[i];
+          if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            answerInput.style.backgroundColor = "lightgreen";
+            answerInput.value = correctAnswer;
+            numCorrect++;
+          } else {
+            answerInput.style.backgroundColor = "lightyellow";
+            answerInput.value = "(" + userAnswer + ")" + correctAnswer;
+          }
+        }
+        /*alert(numCorrect + " out of " + answers.length + " correct!");*/
+      }
+
+      const draggables = document.querySelectorAll(".draggable");
+      const drops = document.querySelectorAll(".drop");
+
+      // Add event listeners to each draggable element
+      draggables.forEach((draggable) => {
+        // When a draggable element is being dragged
+        draggable.addEventListener("dragstart", () => {
+          // Add the class "dragging" to the element
+          draggable.classList.add("dragging");
+        });
+
+        // When a draggable element has been dropped
+        draggable.addEventListener("dragend", () => {
+          // Remove the class "dragging" from the element
+          draggable.classList.remove("dragging");
+        });
+      });
+
+      // When a draggable element is being dragged over the drop zone
+      drops.forEach((drop) => {
+        drop.addEventListener("dragover", (event) => {
+          // Prevent the default action (which is to not allow dropping)
+          event.preventDefault();
+        });
+
+        // When a draggable element has been dropped onto the drop zone
+        drop.addEventListener("drop", (event) => {
+          // Get the value of the "data-value" attribute of the draggable element that is currently being dragged
+          const value = document
+            .querySelector(".dragging")
+            .getAttribute("data-value");
+
+          // Set the value of the drop zone input field to the value of the "data-value" attribute of the draggable element
+          drop.value = value;
+
+          // Prevent the default action (which is to not allow dropping)
+          event.preventDefault();
+        });
+      });
+    </script>
+  </body>
+</html>

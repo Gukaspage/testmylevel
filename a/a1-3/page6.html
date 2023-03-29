@@ -1,0 +1,85 @@
+<html>
+  <body>
+    <div class="mydiv">
+      <div class="column">
+        <div class="row">Ex: 9:00 <i>Klockan är nio.</i></div>
+        <div class="row">
+          1 - <b>8:10</b> Klockan är
+          <input name="answer1" type="text" class="drop" />.
+        </div>
+        <div class="row">
+          2 - <b>9:55</b> Klockan är
+          <input name="answer2" type="text" class="drop" />.
+        </div>
+        <div class="row">
+          3 - <b>3:30</b> Klockan är
+          <input name="answer3" type="text" class="drop" />.
+        </div>
+        <div class="row">
+          4 - <b>6:15</b> Klockan är
+          <input name="answer4" type="text" class="drop" />.
+        </div>
+        <div class="row">
+          5 - <b>10:35</b> Klockan är
+          <input name="answer5" type="text" class="drop" />.
+        </div>
+        <div class="row">
+          6 - <b>11:05</b> Klockan är
+          <input name="answer6" type="text" class="drop" />.
+        </div>
+        <div class="row">
+          7 - <b>4:50</b> Klockan är
+          <input name="answer7" type="text" class="drop" />.
+        </div>
+        <div class="row">
+          8 - <b>2:40</b> Klockan är
+          <input name="answer8" type="text" class="drop" />.
+        </div>
+        <div class="row">
+          9 - <b>1:25</b> Klockan är
+          <input name="answer9" type="text" class="drop" />.
+        </div>
+        <div class="row">
+          10 - <b>7:35</b> Klockan är
+          <input name="answer10" type="text" class="drop" />.
+        </div>
+      </div>
+
+      <br />
+      <button onclick="checkAnswers()">Check Answers</button>
+      <br />
+    </div>
+
+    <script>
+      function checkAnswers() {
+        const answers = [
+          "tio över åtta",
+          "fem i tio",
+          "halv fyra",
+          "kvart över sex",
+          "kvart i elva",
+          "fem över elva",
+          "tio i fem",
+          "tjugo i tre",
+          "fem i halv två",
+          "fem över halv åtta",
+        ];
+        let numCorrect = 0;
+        for (let i = 0; i < answers.length; i++) {
+          const answerInput = document.getElementsByName("answer" + (i + 1))[0];
+          const userAnswer = answerInput.value.trim();
+          const correctAnswer = answers[i];
+          if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            answerInput.style.backgroundColor = "lightgreen";
+            answerInput.value = correctAnswer;
+            numCorrect++;
+          } else {
+            answerInput.style.backgroundColor = "lightyellow";
+            answerInput.value = "(" + userAnswer + ")" + correctAnswer;
+          }
+        }
+        /*alert(numCorrect + " out of " + answers.length + " correct!");*/
+      }
+    </script>
+  </body>
+</html>

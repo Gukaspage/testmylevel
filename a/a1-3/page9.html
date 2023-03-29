@@ -1,0 +1,111 @@
+<html>
+  <body>
+    <div class="mydiv">
+      <h3>9 Prepositioner</h3>
+
+      Carlos kommer <input name="answer1" type="text" class="drop" /> Argentina.
+      Han är gift <input name="answer2" type="text" class="drop" /> Fredrika.
+      Carlos är ekonom och Fredrika är journalist. Carlos jobbar
+      <input name="answer3" type="text" class="drop" /> en bank
+      <input name="answer4" type="text" class="drop" /> stan. Fredrika är
+      väldigt intresserad
+      <input name="answer5" type="text" class="drop" /> musik och just nu
+      skriver hon en artikel
+      <input name="answer6" type="text" class="drop" /> svensk jazz. Emilia
+      arbetar <input name="answer7" type="text" class="drop" /> en restaurang i
+      Uppsala. Hon jobbar <input name="answer8" type="text" class="drop" /> sex
+      och halv två. Hon kommer hem klockan två
+      <input name="answer9" type="text" class="drop" /> natten. Då chattar hon
+      <input name="answer10" type="text" class="drop" /> en kompis i USA. Hon
+      berättar <input name="answer11" type="text" class="drop" /> restaurangen
+      och jobbet där. Vid tre går hon och lägger sig och sover
+      <input name="answer12" type="text" class="drop" /> klockan elva. Hon äter
+      yoghurt och müsli
+      <input name="answer13" type="text" class="drop" /> frukost. Klockan fem
+      tar hon bussen <input name="answer14" type="text" class="drop" /> jobbet.
+      På bussen lyssnar hon
+      <input name="answer15" type="text" class="drop" /> musik och skriver mejl.
+
+      <br />
+      <button onclick="checkAnswers()">Check Answers</button>
+      <br />
+    </div>
+
+    <script>
+      function checkAnswers() {
+        const answers = [
+          "från",
+          "med",
+          "på",
+          "i",
+          "av",
+          "om",
+          "på",
+          "mellan",
+          "på",
+          "med",
+          "om",
+          "till",
+          "till",
+          "till",
+          "på",
+        ];
+        let numCorrect = 0;
+        for (let i = 0; i < answers.length; i++) {
+          const answerInput = document.getElementsByName("answer" + (i + 1))[0];
+          const userAnswer = answerInput.value.trim();
+          const correctAnswer = answers[i];
+          if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            answerInput.style.backgroundColor = "lightgreen";
+            answerInput.value = correctAnswer;
+            numCorrect++;
+          } else {
+            answerInput.style.backgroundColor = "lightyellow";
+            answerInput.value = "(" + userAnswer + ")" + correctAnswer;
+          }
+        }
+        /*alert(numCorrect + " out of " + answers.length + " correct!");*/
+      }
+
+      const draggables = document.querySelectorAll(".draggable");
+      const drops = document.querySelectorAll(".drop");
+
+      // Add event listeners to each draggable element
+      draggables.forEach((draggable) => {
+        // When a draggable element is being dragged
+        draggable.addEventListener("dragstart", () => {
+          // Add the class "dragging" to the element
+          draggable.classList.add("dragging");
+        });
+
+        // When a draggable element has been dropped
+        draggable.addEventListener("dragend", () => {
+          // Remove the class "dragging" from the element
+          draggable.classList.remove("dragging");
+        });
+      });
+
+      // When a draggable element is being dragged over the drop zone
+      drops.forEach((drop) => {
+        drop.addEventListener("dragover", (event) => {
+          // Prevent the default action (which is to not allow dropping)
+          event.preventDefault();
+        });
+
+        // When a draggable element has been dropped onto the drop zone
+        drop.addEventListener("drop", (event) => {
+          // Get the value of the "data-value" attribute of the draggable element that is currently being dragged
+          const value = document
+            .querySelector(".dragging")
+            .getAttribute("data-value");
+
+          // Set the value of the drop zone input field to the value of the "data-value" attribute of the draggable element
+          drop.value = value;
+
+          // Prevent the default action (which is to not allow dropping)
+          event.preventDefault();
+        });
+      });
+    </script>
+  </body>
+</html>

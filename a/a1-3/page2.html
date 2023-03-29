@@ -1,0 +1,191 @@
+<body>
+ <div style="background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333333;
+   
+   " class="my-div">
+
+  <div class="draggable-answers-div">
+   <br>
+
+
+   <div class="draggable" id="drag-area" draggable="true" data-value="Vilket">Vilket</div>
+   <div class="draggable" id="drag-area" draggable="true" data-value="Vilken">Vilken</div>
+   <div class="draggable" id="drag-area" draggable="true" data-value="Varifrån">Varifrån</div>
+
+   <div class="draggable" id="drag-area" draggable="true" data-value="Varför">Varför</div>
+   <div class="draggable" id="drag-area" draggable="true" data-value="Var">Var</div>
+   <div class="draggable" id="drag-area" draggable="true" data-value="När">När</div>
+   <div class="draggable" id="drag-area" draggable="true" data-value="Hur">Hur</div>
+   <div class="draggable" id="drag-area" draggable="true" data-value="Vad">Vad</div>
+  </div>
+
+
+ <h2>2 Frågeord</h2>
+  <p>Skriv rätt frågeord. Du kan använda samma frågeord flera gånger.</p>
+
+
+
+  <ol>
+   <li>- <input name="answer1" type="text" class="drop"> kommer din sambo? <br>
+    - från Portugal.
+
+   </li>
+   <li>- <input name="answer2" type="text" class="drop">mår du? <br>
+    - så där. Jag är lite trött.
+
+
+   </li>
+   <li>- <input name="answer3" type="text" class="drop"> har du för telefonnummer? <br>
+    - 072-12 42 33.
+
+
+   </li>
+   <li>- <input name="answer4" type="text" class="drop"> gammal är morfar? <br>
+    - 89 år.
+
+
+   </li>
+   <li>- <input name="answer5" type="text" class="drop"> tid har vi fikapaus?<br>
+    - Klockan två, tror jag.
+
+
+   </li>
+   <li>- <input name="answer6" type="text" class="drop"> studerar du italienska? <br>
+    - Min pojkvän kommer från Italien.
+
+
+   </li>
+   <li>- <input name="answer7" type="text" class="drop"> mycket kaffe dricker du? <br>
+    - Inte så mycket. Bara två koppar per dag.
+
+
+   </li>
+   <li>- <input name="answer8" type="text" class="drop"> heter "cat" på svenska? <br>
+    - "Katt".
+
+
+   </li>
+   <li>- <input name="answer9" type="text" class="drop"> dags går bussen? <br>
+    - Fem över nio.
+
+
+   </li>
+   <li>- <input name="answer10" type="text" class="drop"> gata bor du på? <br>
+    - Prästgatan.
+
+
+   </li>
+   <li>- <input name="answer11" type="text" class="drop"> nummer? <br>
+    - 12.
+
+
+
+   </li>
+   <li>- <input name="answer12" type="text" class="drop"> slutar vi? <br>
+    - Klockan fem.
+
+   </li>
+   <li>- <input name="answer13" type="text" class="drop"> många barn har du? <br>
+    - Tre.
+
+   </li>
+   <li>- <input name="answer14" type="text" class="drop"> bor du? <br>
+    - I Uppsala.
+
+
+   </li>
+   <li>- <input name="answer15" type="text" class="drop"> är klockan? <br>
+    - Tio i åtta.
+
+   </li>
+  </ol>
+
+  <br>
+  <button onclick="checkAnswers()">Check Answers</button>
+  <br>
+ </div>
+
+ <script>
+  function checkAnswers() {
+   const answers = [
+    "Varifrån",
+    "Hur",
+    "Vad",
+    "Hur",
+    "Vilken",
+    "Varför",
+    "Hur",
+    "Vad",
+    "Hur",
+    "Vilken",
+    "Vilket",
+    "När",
+    "Hur",
+    "Var",
+    "Vad"
+   ];
+   let numCorrect = 0;
+   for (let i = 0; i < answers.length; i++) {
+    const answerInput = document.getElementsByName("answer" + (i + 1))[0];
+    const userAnswer = answerInput.value.trim();
+    const correctAnswer = answers[i];
+    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+     answerInput.style.backgroundColor = "lightgreen";
+     answerInput.value = correctAnswer;
+     numCorrect++;
+    } else {
+     answerInput.style.backgroundColor = "lightyellow";
+     answerInput.value = "(" + userAnswer + ")" + correctAnswer;
+    }
+   }
+   alert(numCorrect + " out of " + answers.length + " correct!");
+  }
+
+
+
+
+  const draggables = document.querySelectorAll('.draggable');
+  const drops = document.querySelectorAll('.drop');
+
+  // Add event listeners to each draggable element
+  draggables.forEach(draggable => {
+   // When a draggable element is being dragged
+   draggable.addEventListener('dragstart', () => {
+    // Add the class "dragging" to the element
+    draggable.classList.add('dragging');
+   });
+
+   // When a draggable element has been dropped
+   draggable.addEventListener('dragend', () => {
+    // Remove the class "dragging" from the element
+    draggable.classList.remove('dragging');
+   });
+  });
+
+  // When a draggable element is being dragged over the drop zone
+  drops.forEach(drop => {
+   drop.addEventListener('dragover', event => {
+    // Prevent the default action (which is to not allow dropping)
+    event.preventDefault();
+   });
+
+   // When a draggable element has been dropped onto the drop zone
+   drop.addEventListener('drop', event => {
+    // Get the value of the "data-value" attribute of the draggable element that is currently being dragged
+    const value = document.querySelector('.dragging').getAttribute('data-value');
+
+    // Set the value of the drop zone input field to the value of the "data-value" attribute of the draggable element
+    drop.value = value;
+
+    // Prevent the default action (which is to not allow dropping)
+    event.preventDefault();
+   });
+  });
+ </script>
+</body>

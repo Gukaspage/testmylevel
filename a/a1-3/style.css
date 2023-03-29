@@ -1,0 +1,208 @@
+body {
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+}
+
+
+
+.test-container {
+ display: flex;
+ flex-wrap: wrap;
+}
+
+.column {
+ flex: 1;
+}
+
+.row {
+ height: 50px;
+ border: 1px solid black;
+ padding: 10px;
+ box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+.home {
+ font-size: 14px;
+ color: #333;
+ border: solid grey 1px;
+ border-radius: 5px;
+ margin-top: 7px;
+}
+
+.nav-div {
+ top: 5px;
+ padding-top: 10px;
+ padding-left: 10%;
+ padding-bottom: 10px;
+ background-color: gainsboro;
+}
+
+nav a {
+ font-size: 16px;
+ font-weight: bold;
+ text-decoration: none;
+ color: #333;
+ padding: 10px;
+ transition: all 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus {
+ color: #fff;
+ background-color: #333;
+}
+
+nav a:active {
+ color: #ccc;
+}
+
+
+
+
+
+.container {
+ display: flex;
+}
+
+#content {
+ margin-top: 30px;
+ flex-grow: 1;
+ margin-left: 20%;
+ margin-bottom: 50px;
+ /* Optional: add some space between container and content */
+}
+
+
+
+.draggable-answers-div {
+ max-width: 18%;
+ max-height: 90%;
+ display: flex;
+ flex-wrap: wrap;
+ position: fixed;
+ top: 40px;
+ /* adjust as needed */
+ bottom: 5px;
+ left: 5px;
+ /* adjust as needed */
+ background-color: #fff;
+ padding: 3px;
+ border: 1px solid #ccc;
+ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+ z-index: 9999;
+}
+
+
+
+
+.mydiv {
+ background-color: #f2f2f2;
+ padding: 20px;
+ border-radius: 10px;
+ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+ font-size: 16px;
+ color: #333333;
+ line-height: 2.5;
+}
+
+input {
+ width: 200px;
+}
+
+
+
+
+.draggables-container {
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+
+/* Define the colors for the Swedish flag */
+:root {
+ --swedish-blue: #006aa7;
+ --swedish-yellow: #ffd500;
+}
+
+/* Define the styles for the draggable div */
+.draggable {
+ margin: 2px;
+ width: 60px;
+ height: 30px;
+ background-color: var(--swedish-blue);
+ color: white;
+ text-align: center;
+ line-height: 30px;
+ /* match the height of the div */
+ font-size: 16px;
+ /* adjust as needed */
+ cursor: pointer;
+ border-radius: 10px;
+ transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+
+/* Define the hover styles for the draggable div */
+.draggable:hover {
+ background-color: var(--swedish-yellow);
+}
+
+/* Define the active/click styles for the draggable div */
+.draggable:active {
+ transform: scale(1.05);
+}
+
+/* Define the focus styles for the draggable div */
+.draggable:focus {
+ outline: none;
+ box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+input.drop[type="text"] {
+ border: none;
+ border-bottom: 2px solid gray;
+ outline: none;
+ padding: 5px;
+ font-size: 16px;
+ transition: border-bottom-color 0.2s ease-in-out;
+}
+
+
+
+.button {
+ display: inline-block;
+ padding: 12px 24px;
+ font-size: 16px;
+ font-weight: bold;
+ text-align: center;
+ text-decoration: none;
+ color: #fff;
+ background-color: #007bff;
+ border-radius: 4px;
+ transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+ background-color: #0062cc;
+ transform: translateY(-2px);
+}
+
+.button:active {
+ background-color: #005cbf;
+ transform: translateY(0px);
+ box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}

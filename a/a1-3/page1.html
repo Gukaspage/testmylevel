@@ -1,0 +1,125 @@
+<body>
+ <h2>1 Vad svarar man?</h2>
+ <div class="mydiv">
+  
+  <div class="draggable-answers-div">
+
+
+
+
+  <div id="myDiv">
+   Nu kör vi!
+  </div>
+
+
+
+
+
+  </div>
+
+  <form>
+   <p>1. Jag söker jobb på restaurang.<br>
+    <input type="radio" name="q1" value="a">a. Jaha. Lycka till!<br>
+    <input type="radio" name="q1" value="b">b. Det var så lite.<br>
+    <input type="radio" name="q1" value="c">c. Tack så mycket.<br>
+   </p>
+
+   <p>2. Vad har du för yrke?<br>
+    <input type="radio" name="q2" value="a">a. På förskola.<br>
+    <input type="radio" name="q2" value="b">b. Jag är ingenjör.<br>
+    <input type="radio" name="q2" value="c">c. Jag har två barn.<br>
+   </p>
+
+   <p>3. Hur dags börjar filmen?<br>
+    <input type="radio" name="q3" value="a">a. Hon är kvart över sju.<br>
+    <input type="radio" name="q3" value="b">b. Den är kvart över sju.<br>
+    <input type="radio" name="q3" value="c">c. Kvart över sju.<br>
+   </p>
+
+   <p>4. Är du gift?<br>
+    <input type="radio" name="q4" value="a">a. Nej, men jag är en sambo.<br>
+    <input type="radio" name="q4" value="b">b. Ja, jag är singel.<br>
+    <input type="radio" name="q4" value="c">c. Nej, vi bor inte ihop.<br>
+   </p>
+
+   <p>5. Hur är läget?<br>
+    <input type="radio" name="q5" value="a">a. Ja precis.<br>
+    <input type="radio" name="q5" value="b">b. Helt okej tack.<br>
+    <input type="radio" name="q5" value="c">c. Jaha vad kul.<br>
+   </p>
+
+   <p>6. När är du född?<br>
+    <input type="radio" name="q6" value="a">a. 1990.<br>
+    <input type="radio" name="q6" value="b">b. I Malmö.<br>
+    <input type="radio" name="q6" value="c">c. 25 år.<br>
+   </p>
+
+   <p>7. Tack så mycket<br>
+    <input type="radio" name="q7" value="a">a. Ja, tack.<br>
+    <input type="radio" name="q7" value="b">b. Helt okej.<br>
+    <input type="radio" name="q7" value="c">c. Det var så lite.<br>
+   </p>
+
+   <p>8. Anders och jag bor inte ihop.<br>
+    <input type="radio" name="q8" value="a">a. Jaha.<br>
+    <input type="radio" name="q8" value="b">b. Nähä.<br>
+    <input type="radio" name="q8" value="c">c. Ja.<br>
+   </p>
+
+   <p>9. Var ligger Kiruna?<br>
+    <input type="radio" name="q9" value="a">a. Ja, Jag bor där.<br>
+    <input type="radio" name="q9" value="b">b. I norra Sverige.<br>
+    <input type="radio" name="q9" value="c">c. Svenska och finska.<br>
+   </p>
+
+   <p>10. Ha det så bra!<br>
+    <input type="radio" name="q10" value="a">a. Du med!<br>
+    <input type="radio" name="q10" value="b">b. Bara bra, tack.<br>
+    <input type="radio" name="q10" value="c">c. Det är toppen.<br>
+   </p>
+
+   <button type="button" onclick="checkAnswers()">Kontrollera svar</button>
+  </form>
+ </div>
+
+
+ <script>
+  function checkAnswers() {
+   var correctAnswers = ['a', 'b', 'c', 'a', 'b', 'a', 'c', 'b', 'b', 'a'];
+   var numQuestions = 10;
+   var numCorrect = 0;
+   var userAnswers = [];
+   var resultMsg = "# ";
+
+   // Get user's answers and compare to correct answers
+   for (var i = 1; i <= numQuestions; i++) {
+    var radios = document.getElementsByName('q' + i);
+    for (var j = 0; j < radios.length; j++) {
+     if (radios[j].checked) {
+      userAnswers.push(radios[j].value);
+      if (radios[j].value === correctAnswers[i - 1]) {
+       numCorrect++;
+      }
+     }
+    }
+   }
+
+
+   // Construct result message
+   resultMsg += numCorrect + " of " + numQuestions + " <br> \n\n";
+   for (var i = 0; i < correctAnswers.length; i++) {
+    resultMsg += "" + (i + 1) + ": " + correctAnswers[i] + " <br> \n";
+   }
+
+   // Display result message
+    // alert(resultMsg);
+
+
+
+    var divElement = document.getElementById("myDiv");
+   divElement.innerHTML = (resultMsg);
+
+
+  }
+ </script>
+</body>

@@ -1,0 +1,139 @@
+<html>
+  <body>
+    <style>
+      input {
+        width: 400px;
+      }
+      span {
+        margin-left: 70px;
+      }
+
+      .words-div{
+        padding-left: 100px;
+      }
+
+      .test-container {
+        display: block;
+      }
+    </style>
+
+    <div class="mydiv">
+  <h3>8 Ordföljd</h3>
+  <p>Skriv den form som fattas.</p>
+
+  <div class="test-container">
+    <div style="border: 1px solid black; box-sizing: border-box">
+      <div class="input-div">
+        <b>1.</b>
+        Efter
+        <input name="answer1" type="text" class="drop" />
+        .
+      </div>
+      <div class="words-div">diskar/Renate/middagen</div>
+    </div>
+
+    <div style="border: 1px solid black; box-sizing: border-box">
+      <div class="input-div">
+        <b>2.</b>
+        På
+        <input name="answer2" type="text" class="drop" />
+        .
+      </div>
+      <div class="words-div">te/dricker/Erik/morgonen/kopp/en</div>
+    </div>
+
+    <div style="border: 1px solid black; box-sizing: border-box">
+      <div class="input-div">
+        <b>3.</b>
+        Varför
+        <input name="answer3" type="text" class="drop" />
+        .
+      </div>
+      <div class="words-div">Sverige/du/i/bor?</div>
+    </div>
+
+    <div style="border: 1px solid black; box-sizing: border-box">
+      <div class="input-div">
+        <b>4.</b>
+        I
+        <input name="answer4" type="text" class="drop" />
+        .
+      </div>
+      <div class="words-div">Albertos/sommar/kommer/mamma/Sverige/till</div>
+    </div>
+
+    <div style="border: 1px solid black; box-sizing: border-box">
+      <div class="input-div">
+        <b>5.</b>
+        Klockan
+        <input name="answer5" type="text" class="drop" />
+        .
+      </div>
+      <div class="words-div">Alice/sig/går/tolv/lägger/och</div>
+    </div>
+
+    <div style="border: 1px solid black; box-sizing: border-box">
+      <div class="input-div">
+        <b>6.</b>
+        Anita
+        <input name="answer6" type="text" class="drop" />
+        .
+      </div>
+      <div class="words-div">engelska/inte/talar</div>
+    </div>
+
+    <div style="border: 1px solid black; box-sizing: border-box">
+      <div class="input-div">
+        <b>7.</b>
+        Hur
+        <input name="answer7" type="text" class="drop" />
+        .
+      </div>
+      <div class="words-div">kursen/personer/ni/är/många/på?</div>
+    </div>
+
+    <div style="border: 1px solid black; box-sizing: border-box">
+      <div class="input-div">
+        <b>8.</b>
+        Vilken
+        <input name="answer8" type="text" class="drop" />
+        .
+      </div>
+      <div class="words-div">lunch/ni/äter/tid?</div>
+    </div>
+
+    <div style="border: 1px solid black; box-sizing: border-box">
+
+    <script>
+      function checkAnswers() {
+        const answers = [
+          "middagen diskar Renate",
+          "morgonen dricker Erik en kopp te",
+          "bor du i Sverige",
+          "sommar kommer Albertos mamma till Sverige",
+          "tolv går Alice och lägger sig",
+          "talar inte engelska",
+          "många personer är ni på kursen",
+          "tid äter ni lunch",
+          "bor inte i Sverige",
+          "tolv äter Anna biff och pommes frites på en restaurang i stan",
+        ];
+        let numCorrect = 0;
+        for (let i = 0; i < answers.length; i++) {
+          const answerInput = document.getElementsByName("answer" + (i + 1))[0];
+          const userAnswer = answerInput.value.trim();
+          const correctAnswer = answers[i];
+          if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            answerInput.style.backgroundColor = "lightgreen";
+            answerInput.value = correctAnswer;
+            numCorrect++;
+          } else {
+            answerInput.style.backgroundColor = "lightyellow";
+            answerInput.value = "(" + userAnswer + ")" + correctAnswer;
+          }
+        }
+        /*alert(numCorrect + " out of " + answers.length + " correct!");*/
+      }
+    </script>
+  </body>
+</html>
